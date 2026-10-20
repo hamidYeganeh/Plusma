@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // The local demo is also opened through its loopback IP in the in-app browser.
+  allowedDevOrigins: ["127.0.0.1"],
   experimental: {
     agentFeedback: true,
   },
   cacheComponents: true,
   partialPrefetching: true,
+  transpilePackages: ["@repo/ui"],
   turbopack: {
     rules: {
       "*.css": {
@@ -17,4 +20,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default createNextIntlPlugin()(nextConfig);
