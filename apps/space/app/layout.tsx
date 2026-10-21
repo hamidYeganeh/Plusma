@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@fontsource/vazirmatn/400.css";
@@ -8,7 +9,7 @@ import "@fontsource/vazirmatn/900.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "پرسه | گردش در فضای کافه‌ها", template: "%s | پرسه" },
+  title: { default: "Plusma | گردش در فضای کافه‌ها", template: "%s | Plusma" },
   description: "قبل از آمدن، در فضای سه‌بعدی کافه‌ها قدم بزن.",
 };
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <NextIntlClientProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

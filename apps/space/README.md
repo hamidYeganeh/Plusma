@@ -1,6 +1,6 @@
 # Space
 
-برنامه عمومی پرسه. از ریشه مخزن:
+برنامه عمومی Plusma. از ریشه مخزن:
 
 ```sh
 npm run dev --workspace space
