@@ -44,6 +44,7 @@ export default function HomePage() {
                   priority
                   sizes="(max-width: 810px) 100vw, 60vw"
                 />
+
                 <Badge variant="secondary">{t("tag")}</Badge>
               </Link>
               <div className="cafe-card-copy">
