@@ -4,17 +4,15 @@ import {
   PLACES,
   TABLES,
   isWalkable,
-} from "../modules/explore/scenes/barg/layout.js";
-import { routeToTable } from "../modules/explore/table-navigation.js";
-import {
-  initialRenderQuality,
-  needsLighterRendering,
-} from "../modules/explore/render-quality.js";
+  findPath,
+} from "../modules/cafe/scenes/barg/layout.js";
+import { routeToTarget } from "@repo/spatial";
+import { initialRenderQuality, needsLighterRendering } from "@repo/spatial";
 
 test("Every table can be approached from every visitor waypoint without crossing furniture", () => {
   for (const [name, start] of Object.entries(PLACES)) {
     for (const table of TABLES) {
-      const approach = routeToTable(start, table);
+      const approach = routeToTarget(start, table, { findPath, isWalkable });
       assert.ok(approach, `${name} to table ${table.id}`);
       assert.ok(
         Math.hypot(approach.point.x - table.x, approach.point.z - table.z) <=

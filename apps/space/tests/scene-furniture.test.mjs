@@ -6,7 +6,7 @@ import {
   createHollowLogs,
   createDecoratedTree,
   createEntranceFacade,
-} from "../modules/explore/scenes/barg/reference-objects.js";
+} from "../modules/cafe/scenes/barg/reference-objects.js";
 
 function inspect(group) {
   let triangles = 0;

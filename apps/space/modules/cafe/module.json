@@ -1,0 +1,9 @@
+{
+  "kind": "business",
+  "public": [
+    "index.ts",
+    "experience/index.ts",
+    "scenes/index.ts",
+    "staff/index.ts"
+  ]
+}

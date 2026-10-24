@@ -7,7 +7,7 @@ import {
   POND,
   TABLES,
   LANDMARKS,
-} from "../modules/explore/scenes/barg/layout.js";
+} from "../modules/cafe/scenes/barg/layout.js";
 test("Every visitor waypoint has free standing space", () => {
   for (const [name, p] of Object.entries(PLACES))
     assert.ok(isWalkable(p.x, p.z), name);
@@ -53,7 +53,7 @@ test("Unreachable clicks outside the cafe return no route", () => {
   assert.deepEqual(findPath(PLACES.entrance, { x: 100, z: 100 }), []);
 });
 
-import { joystickVector } from "../modules/explore/joystick-input.js";
+import { joystickVector } from "@repo/spatial";
 test("Joystick has a dead zone and clamps diagonal movement to unit length", () => {
   assert.equal(joystickVector(1, 1).x, 0);
   assert.equal(Math.abs(joystickVector(1, 1).y), 0);

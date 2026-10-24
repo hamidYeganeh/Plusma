@@ -1,0 +1,980 @@
+/* Luma guest management layout; every surface uses the existing application theme. */
+.staff-surface {
+  min-height: 100dvh;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 14px;
+}
+.staff-surface button,
+.staff-dialog button {
+  font-family: inherit;
+}
+.staff-surface svg,
+.staff-dialog svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+.staff-topnav {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+.staff-topnav-inner {
+  max-width: 1160px;
+  min-height: 76px;
+  padding: 12px 28px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.staff-topnav-start,
+.staff-utilities {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+.staff-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  direction: ltr;
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+.staff-wordmark > span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-radius: 10px;
+}
+.staff-wordmark svg {
+  width: 20px;
+  height: 20px;
+}
+.staff-nav-divider {
+  height: 22px;
+  width: 1px;
+  background: var(--border);
+}
+.staff-venue select {
+  max-width: 190px;
+  background: transparent;
+  border: 0;
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+.staff-user-name {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.staff-utilities {
+  gap: 12px;
+}
+.staff-utilities .theme-switch button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: transparent;
+  border-color: transparent;
+}
+.staff-workspace {
+  max-width: 1016px;
+  padding: 48px 28px 70px;
+  margin-inline: auto;
+}
+.staff-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.staff-eyebrow {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 500;
+}
+.staff-page-heading h1 {
+  margin: 7px 0 6px;
+  font-weight: 750;
+  font-size: 32px;
+  line-height: 1.45;
+  letter-spacing: -0.75px;
+}
+.staff-page-heading p {
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+.staff-visit,
+.staff-text-link,
+.staff-back {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+.staff-visit:hover,
+.staff-text-link:hover,
+.staff-back:hover {
+  color: var(--primary);
+}
+.staff-tabs {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 27px;
+}
+.staff-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-foreground);
+  padding: 0 0 15px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.staff-tabs button[aria-current] {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+.staff-tabs button > span {
+  padding: 0 7px;
+  min-width: 24px;
+  font-size: 11px;
+  line-height: 21px;
+  border-radius: 6px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+.staff-tabs button[aria-current] > span {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.staff-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 30px;
+}
+.staff-date-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 13px;
+}
+.staff-date-row svg {
+  color: var(--muted-foreground);
+}
+.staff-date-row input {
+  direction: ltr;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  min-height: 35px;
+  padding: 5px 9px;
+  max-width: 165px;
+}
+.staff-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.staff-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.staff-section-title h2 {
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+}
+.staff-section-title p {
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+.staff-section-title button {
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+.staff-attendance {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--card);
+  padding: 20px 0;
+}
+.staff-attendance > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.staff-attendance > div + div {
+  border-inline-start: 1px solid var(--border);
+}
+.staff-attendance strong {
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+.staff-attendance span {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.staff-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.staff-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 9px 12px;
+}
+.staff-search:focus-within {
+  border-color: var(--ring);
+  outline: 2px solid var(--secondary);
+}
+.staff-search svg {
+  color: var(--muted-foreground);
+  width: 16px;
+  height: 16px;
+}
+.staff-search input {
+  outline: none;
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  font-size: 12px;
+}
+.staff-search input::placeholder {
+  color: var(--muted-foreground);
+}
+.staff-status-filter {
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 12px;
+  border-radius: 10px;
+  min-height: 38px;
+  padding: 6px 10px;
+}
+.staff-count {
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.staff-reservation-table {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card);
+}
+.staff-reservation-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: start;
+}
+.staff-reservation-table th {
+  padding: 13px 16px;
+  text-align: start;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--background);
+}
+.staff-reservation-table td {
+  padding: 18px 16px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: 13px;
+}
+.staff-guest-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.staff-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+.staff-guest-info strong {
+  font-size: 13px;
+  font-weight: 550;
+  display: block;
+  margin-bottom: 3px;
+}
+.staff-guest-info a,
+.staff-guest-info small {
+  display: block;
+  width: fit-content;
+  color: var(--muted-foreground);
+  font-size: 11px;
+}
+.staff-guest-info a:hover {
+  color: var(--primary);
+}
+.staff-guest-info small {
+  font-size: 9px;
+  margin-top: 2px;
+}
+.staff-time {
+  white-space: nowrap;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.staff-table-number {
+  display: block;
+  white-space: nowrap;
+}
+.staff-people {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  margin-top: 4px;
+}
+.staff-people svg {
+  width: 13px;
+  height: 13px;
+}
+.staff-badge {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  padding: 4px 9px;
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 6px;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+}
+.staff-badge.quiet {
+  color: var(--muted-foreground);
+  background: var(--muted);
+}
+.staff-row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.staff-row-actions button {
+  border-radius: 9px;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.staff-row-actions svg {
+  width: 14px;
+  height: 14px;
+}
+.staff-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 9px;
+  padding: 64px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  color: var(--muted-foreground);
+}
+.staff-empty > svg {
+  color: var(--primary);
+  width: 30px;
+  height: 30px;
+  margin-bottom: 7px;
+}
+.staff-empty h3,
+.staff-empty h2 {
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 16px;
+}
+.staff-empty p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+.staff-empty button,
+.staff-empty a {
+  margin-top: 10px;
+}
+.staff-footnote {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  margin-top: 0;
+  line-height: 1.8;
+}
+.staff-mobile-label {
+  display: none;
+}
+.staff-recovery {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.staff-recovery button {
+  flex-shrink: 0;
+}
+.staff-login {
+  max-width: 420px;
+  padding: 72px 22px 50px;
+  margin: auto;
+  text-align: center;
+}
+.staff-login-mark {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: var(--secondary);
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 22px;
+}
+.staff-login-mark svg {
+  width: 27px;
+  height: 27px;
+}
+.staff-login h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  margin: 9px 0 8px;
+  line-height: 1.5;
+}
+.staff-login-intro {
+  color: var(--muted-foreground);
+  line-height: 1.9;
+  font-size: 13px;
+}
+.staff-login-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px;
+  margin: 28px 0 22px;
+  text-align: start;
+}
+.staff-login-card h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+.staff-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.staff-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.staff-form input:not([type="checkbox"]) {
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 10px 12px;
+  outline: none;
+  font-size: 14px;
+  min-height: 42px;
+}
+.staff-form input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.staff-form input::placeholder {
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.staff-form button[type="submit"] {
+  margin-top: 4px;
+  border-radius: 10px;
+  min-height: 42px;
+}
+.staff-help {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+.staff-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.staff-form .staff-checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+.staff-checkbox input {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+.staff-dialog {
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  font-family: "Vazirmatn", Arial, sans-serif;
+}
+.staff-dialog [data-slot="dialog-header"] {
+  padding-inline-end: 28px;
+}
+.staff-dialog [data-slot="dialog-title"] {
+  line-height: 1.6;
+  font-size: 19px;
+  font-weight: 650;
+}
+.staff-dialog [data-slot="dialog-description"] {
+  font-size: 12px;
+  line-height: 1.9;
+}
+.staff-menu-list {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.staff-menu-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+}
+.staff-menu-row + .staff-menu-row {
+  border-top: 1px solid var(--border);
+}
+.staff-item-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--secondary);
+  border-radius: 12px;
+  color: var(--secondary-foreground);
+  flex-shrink: 0;
+}
+.staff-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.staff-item-info h3,
+.staff-compose-row h3 {
+  font-size: 14px;
+  font-weight: 550;
+}
+.staff-item-info p,
+.staff-compose-row p {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  margin-top: 4px;
+}
+.staff-item-info p span {
+  padding: 0 4px;
+}
+.staff-price {
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+}
+.staff-segments {
+  display: flex;
+  background: var(--muted);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+.staff-segments button {
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.staff-segments button[aria-pressed="true"] {
+  color: var(--foreground);
+  background: var(--card);
+}
+.staff-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.staff-order-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+}
+.staff-order-card header,
+.staff-order-card footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.staff-order-card h3 {
+  font-weight: 550;
+  margin: 4px 0;
+}
+.staff-order-card small {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  display: block;
+}
+.staff-order-card ul {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 18px 0;
+  padding: 13px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.staff-order-card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+}
+.staff-order-card li > span + span {
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.staff-order-card footer strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.staff-composer {
+  gap: 18px;
+}
+.staff-composer .staff-search {
+  max-width: none;
+}
+.staff-composer-items {
+  max-height: 35dvh;
+  overflow-y: auto;
+}
+.staff-compose-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+.staff-compose-row + .staff-compose-row {
+  border-top: 1px solid var(--border);
+}
+.staff-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.staff-quantity button {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+}
+.staff-quantity output {
+  min-width: 16px;
+  font-size: 13px;
+  text-align: center;
+}
+.staff-composer-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.staff-surface :focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .staff-topnav-inner {
+    padding: 12px 18px;
+    min-height: 68px;
+    gap: 12px;
+  }
+  .staff-topnav-start {
+    gap: 10px;
+  }
+  .staff-wordmark {
+    font-size: 18px;
+  }
+  .staff-wordmark > span {
+    width: 29px;
+    height: 29px;
+  }
+  .staff-venue select {
+    max-width: 118px;
+    font-size: 11px;
+  }
+  .staff-utilities {
+    gap: 2px;
+  }
+  .staff-user-name {
+    display: none;
+  }
+  .staff-utilities button {
+    padding-inline: 8px;
+    font-size: 12px;
+  }
+  .staff-utilities button svg {
+    width: 15px;
+    height: 15px;
+  }
+  .staff-workspace {
+    padding: 30px 18px 44px;
+  }
+  .staff-page-heading {
+    margin-bottom: 24px;
+    gap: 14px;
+  }
+  .staff-page-heading h1 {
+    font-size: 26px;
+  }
+  .staff-page-heading p {
+    font-size: 12px;
+  }
+  .staff-visit {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .staff-tabs {
+    gap: 27px;
+    margin-bottom: 22px;
+  }
+  .staff-date-row {
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .staff-date-row input {
+    width: 100%;
+    max-width: none;
+  }
+  .staff-section {
+    gap: 17px;
+  }
+  .staff-section-title h2 {
+    font-size: 18px;
+  }
+  .staff-section-title p {
+    font-size: 11px;
+  }
+  .staff-section-title button {
+    font-size: 11px;
+    padding-inline: 10px;
+  }
+  .staff-attendance {
+    padding: 17px 0;
+  }
+  .staff-attendance strong {
+    font-size: 22px;
+  }
+  .staff-attendance span {
+    font-size: 11px;
+  }
+  .staff-toolbar {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  .staff-search {
+    max-width: none;
+    flex: 1;
+    min-width: 150px;
+  }
+  .staff-status-filter {
+    width: 122px;
+    font-size: 10px;
+  }
+  .staff-reservation-table {
+    border: 0;
+    background: none;
+    overflow: visible;
+  }
+  .staff-reservation-table table,
+  .staff-reservation-table tbody {
+    display: block;
+  }
+  .staff-reservation-table thead {
+    display: none;
+  }
+  .staff-reservation-table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 17px 10px;
+    padding: 19px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 14px;
+  }
+  .staff-reservation-table tr + tr {
+    margin-top: 12px;
+  }
+  .staff-reservation-table td {
+    padding: 0;
+    border: 0;
+  }
+  .staff-reservation-table td:first-child {
+    grid-column: 1;
+  }
+  .staff-reservation-table td:nth-child(2) {
+    grid-column: 2;
+    text-align: end;
+  }
+  .staff-reservation-table td:nth-child(3) {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .staff-reservation-table td:nth-child(4) {
+    grid-column: 2;
+    text-align: end;
+  }
+  .staff-reservation-table td:last-child {
+    grid-column: 1/-1;
+  }
+  .staff-mobile-label {
+    display: block;
+    font-size: 10px;
+    color: var(--muted-foreground);
+    margin-bottom: 6px;
+  }
+  .staff-people {
+    margin: 0;
+  }
+  .staff-row-actions {
+    justify-content: flex-end;
+  }
+  .staff-row-actions button {
+    min-height: 36px;
+  }
+  .staff-reservation-table .staff-row-actions > button:first-child {
+    flex: 1;
+  }
+  .staff-empty {
+    padding: 44px 16px;
+  }
+  .staff-recovery {
+    flex-direction: column;
+    align-items: start;
+  }
+  .staff-login {
+    padding-top: 44px;
+  }
+  .staff-login-card {
+    padding: 22px;
+  }
+  .staff-login h1 {
+    font-size: 25px;
+  }
+  .staff-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .staff-menu-row {
+    padding: 15px 12px;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+  .staff-item-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+  }
+  .staff-item-info h3 {
+    font-size: 13px;
+  }
+  .staff-price {
+    font-size: 11px;
+  }
+  .staff-order-card {
+    padding: 18px;
+  }
+  .staff-order-card footer {
+    align-items: start;
+    flex-direction: column;
+  }
+  .staff-order-card footer .staff-row-actions {
+    width: 100%;
+  }
+  .staff-order-card footer .staff-row-actions button:last-child {
+    flex: 1;
+  }
+  .staff-segments button {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+}
+.staff-guest-info > div,
+.staff-compose-row > div:first-child {
+  min-width: 0;
+}
+.staff-guest-info strong,
+.staff-item-info h3,
+.staff-item-info p,
+.staff-order-card h3,
+.staff-order-card li > span:first-child,
+.staff-compose-row h3 {
+  overflow-wrap: anywhere;
+}

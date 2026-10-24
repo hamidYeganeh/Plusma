@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { cafes, getCafe } from "@/modules/cafes/catalog";
-import { CafeExplorer } from "@/modules/explore/cafe-explorer";
+import { cafes, getCafe } from "@/modules/cafe";
+import { CafeExplorer } from "@/modules/cafe/experience";
 
 export function generateStaticParams() {
   return cafes.map(({ slug }) => ({ slug }));

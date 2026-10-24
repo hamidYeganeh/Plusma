@@ -1,0 +1,39 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch --clear-screen=false --exclude '.turbo/**' --exclude 'dist/**' --env-file=.env.local src/main.ts",
+    "start": "node dist/src/main.js",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "test": "npm run build && node --test --test-concurrency=1 tests/*.test.mjs",
+    "db:migrate": "node --env-file=.env.local scripts/migrate.mjs",
+    "db:seed": "node --env-file=.env.local scripts/seed.mjs",
+    "staff:create": "npm run build && node --env-file=.env.local scripts/create-staff.mjs"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.2.0",
+    "@nestjs/core": "^12.2.0",
+    "@nestjs/platform-express": "^12.2.0",
+    "@repo/contracts": "*",
+    "pg": "^8.23.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.6",
+    "@typescript-eslint/eslint-plugin": "^8.72.0",
+    "@typescript-eslint/parser": "^8.72.0",
+    "eslint": "^9.39.1",
+    "globals": "^17.12.0",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.3"
+  }
+}

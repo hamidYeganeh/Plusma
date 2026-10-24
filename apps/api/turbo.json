@@ -1,0 +1,22 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "passThroughEnv": [
+        "DATABASE_URL",
+        "APP_SECRET",
+        "PORT",
+        "TRUSTED_ORIGINS",
+        "NODE_ENV",
+        "HOST"
+      ]
+    },
+    "test": {
+      "cache": false,
+      "passThroughEnv": ["TEST_DATABASE_URL"]
+    }
+  }
+}

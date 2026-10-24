@@ -1,0 +1,27 @@
+{
+  "name": "@repo/spatial",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./runtime": "./src/runtime.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "test": "node --test tests/*.test.mjs",
+    "dev:fixture": "node tests/browser-server.mjs"
+  },
+  "dependencies": {
+    "three": "^0.185.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/node": "^20",
+    "@types/three": "^0.185.0",
+    "@typescript-eslint/parser": "^8.72.0",
+    "eslint": "^9",
+    "typescript": "5.9.3"
+  }
+}

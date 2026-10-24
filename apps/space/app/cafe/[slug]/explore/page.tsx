@@ -1,5 +1,5 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { cafes, getCafe } from "@/modules/cafes/catalog";
+import { cafes, getCafe } from "@/modules/cafe";
 
 export function generateStaticParams() {
   return cafes.map(({ slug }) => ({ slug }));

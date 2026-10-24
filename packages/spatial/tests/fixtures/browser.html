@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spatial interface conformance</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      margin: 24px;
+      background: #f5f5f4;
+      color: #18221d;
+    }
+    button {
+      padding: 10px;
+      margin: 3px;
+    }
+    #scene {
+      width: min(800px, 95vw);
+      height: 460px;
+      display: block;
+      background: #d8ddd8;
+    }
+    #map {
+      width: 180px;
+      height: 200px;
+    }
+    output {
+      display: block;
+      margin: 12px 0;
+    }
+    #markers {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #markers button {
+      position: absolute;
+      pointer-events: auto;
+    }
+  </style>
+  <h1>Residential scene · spatial interface conformance</h1>
+  <p>String room targets, a foyer waypoint and no cafe domain.</p>
+  <output id="state" aria-live="polite">Starting</output>
+  <div id="controls">
+    <button id="living">Select living room</button
+    ><button id="bedroom">Select bedroom</button>
+    <button id="focus">Focus selected room</button
+    ><button id="overview">Overview</button>
+    <button id="tour">Guided tour</button><button id="pause">Pause</button>
+    <button id="capture">Capture</button><button id="dispose">Dispose</button
+    ><button id="mount">Remount</button>
+  </div>
+  <div style="position: relative; width: fit-content">
+    <canvas id="scene" tabindex="0"></canvas>
+    <div id="markers">
+      <button id="living-marker" hidden>Living room</button
+      ><button id="bedroom-marker" hidden>Bedroom</button>
+    </div>
+  </div>
+  <canvas id="map" width="220" height="252"></canvas>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/three/build/three.module.js",
+        "three/addons/": "/three/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import { mountExperience } from "/src/runtime.ts";
+    import { residentialScene } from "/tests/fixtures/residential-scene.ts";
+    const state = document.querySelector("#state");
+    let experience,
+      selected = null,
+      disposed = 0,
+      ready = false;
+    const show = (message) => {
+      state.textContent = message + " | disposed: " + disposed;
+    };
+    function mount() {
+      experience?.dispose();
+      ready = false;
+      experience = mountExperience({
+        definition: residentialScene(
+          (id) => {
+            selected = id;
+            show("Selected: " + id);
+          },
+          () => {
+            disposed++;
+          },
+        ),
+        canvas: document.querySelector("#scene"),
+        map: document.querySelector("#map"),
+        debug: true,
+        markers: new Map([
+          ["living-room", document.querySelector("#living-marker")],
+          ["bedroom", document.querySelector("#bedroom-marker")],
+        ]),
+        onReady() {
+          ready = true;
+          show("Ready");
+        },
+        onError() {
+          show("Render error");
+        },
+        onViewChange(mode) {
+          show("View: " + mode);
+        },
+        onTourChange(value) {
+          show("Tour: " + value);
+        },
+        onTargetSelect(id) {
+          show("Picked: " + id);
+        },
+      });
+    }
+    document.querySelector("#living").onclick = () =>
+      experience.selectTarget("living-room");
+    document.querySelector("#bedroom").onclick = () =>
+      experience.selectTarget("bedroom");
+    document.querySelector("#living-marker").onclick = () =>
+      experience.selectTarget("living-room");
+    document.querySelector("#bedroom-marker").onclick = () =>
+      experience.selectTarget("bedroom");
+    document.querySelector("#focus").onclick = () => {
+      if (selected) experience.focusTarget(selected);
+    };
+    document.querySelector("#overview").onclick = () =>
+      experience.setView("overview");
+    document.querySelector("#tour").onclick = () => experience.setTouring(true);
+    document.querySelector("#pause").onclick = () => {
+      experience.setPaused(true);
+      show("Paused");
+    };
+    document.querySelector("#capture").onclick = async () => {
+      const blob = await experience.capture();
+      show("Capture bytes: " + (blob?.size ?? 0));
+    };
+    document.querySelector("#dispose").onclick = () => {
+      experience.dispose();
+      show("Disposed");
+    };
+    document.querySelector("#mount").onclick = mount;
+    addEventListener("beforeunload", () => experience?.dispose());
+    mount();
+  </script>
+</html>

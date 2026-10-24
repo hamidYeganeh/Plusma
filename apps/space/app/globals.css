@@ -248,7 +248,8 @@ canvas:focus-visible {
   padding: 64px 0 44px;
   max-width: 760px;
 }
-.directory-intro h1 {
+.directory-intro h1,
+.directory-intro .directory-title {
   font-size: clamp(44px, 5vw, 72px);
   font-weight: 900;
   line-height: 1.15;
@@ -267,7 +268,15 @@ canvas:focus-visible {
   margin-bottom: 22px;
 }
 .cafe-grid {
+  display: grid;
+  gap: 28px;
   max-width: 950px;
+}
+.explorer[data-dense-tables="true"] .table-marker {
+  min-width: 34px;
+  width: 34px;
+  height: 34px;
+  font-size: 12px;
 }
 .cafe-card {
   border-radius: 28px;
@@ -638,7 +647,8 @@ canvas:focus-visible {
   .directory-intro {
     padding: 60px 0 40px;
   }
-  .directory-intro h1 {
+  .directory-intro h1,
+  .directory-intro .directory-title {
     font-size: 56px;
   }
   .directory-intro p {
@@ -1112,7 +1122,8 @@ canvas:focus-visible {
   .directory-intro {
     padding: 44px 0 32px;
   }
-  .directory-intro h1 {
+  .directory-intro h1,
+  .directory-intro .directory-title {
     font-size: 44px;
   }
   .directory-header .wordmark {

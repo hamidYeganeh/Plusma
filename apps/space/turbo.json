@@ -1,0 +1,7 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": { "env": ["API_ORIGIN"] },
+    "dev": { "passThroughEnv": ["API_ORIGIN"] }
+  }
+}
